@@ -1,240 +1,109 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Battleship</title>
-    <!-- <style type="text/css">
-      .log
-      {
-        position:absolute;
-        right:0;bottom:1300;
-      }
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
 
-    </style> -->
-    <style>
-      body {
-        background-image: url("wp3.jpg");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-      }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="resources/styles/main.css">
-    <script src="src/Player.js"></script>
-    <script src="src/Opponent.js"></script>
-    <script src="src/OpponentAI.js"></script>
-    <script src="src/Graphics.js"></script>
-    <script src="src/Game.js"></script>
-    <script src="src/Boat.js"></script>
-    <script src="src/MessageBox.js"></script>
-    <script src="src/main.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div id="player_grid"></div>
-      <div id="opponent_grid"></div>
-      <!-- <div class="log">
-        <img alt="sidebar" src="sidebar.jpg">
-      </div> -->
-      <br>
-      <div id="message_box">Welcome to battleship.js!<br></div>
-      <hr>
-      <div class="log">
-        <img alt="bottom bar" src="bottombar6.png" width="1000px">
-      </div>
-      <br>
-      <div class="controls">
-		<button id="restart_btn" disabled>Restart game</button>
-      </div>
-      <br>
-      <div class="alan-btn">
-        <script type="text/javascript"
-        src="https://studio.alan.app/web/lib/alan_lib.min.js"></script>
-        <script>
-          var alanBtnInstance = alanBtn({
-            key: "75bde666841388eb70107cfb0db8405a2e956eca572e1d8b807a3e2338fdd0dc/stage",
-            onCommand: function (commandData) {
-              if (commandData.command === "go:back") {
-                //call client code that will react on the received command
-              }
-              if(commandData.HV1 != undefined){
-                var hv1 = commandData.HV1;
-                var hv2 = commandData.HV2;
-                var hv3 = commandData.HV3;
-                var hv4 = commandData.HV4;
-                var hv5 = commandData.HV5;
-                const input = [hv1, hv2, hv3, hv4, hv5];
-                for(let i = 0; i < input.length; i++){
-                  setTimeout(() => {
-                    if(input[i].length != 0){
-                      var letter = input[i].substring(0,1).toLowerCase();
-                      var number = parseInt(input[i].substring(1));
-                      var ltn = -1;
-                      switch(letter){
-                        case 'a':
-                          ltn = 0;
-                          break;
-                        case 'b':
-                          ltn = 1;
-                          break;
-                        case 'c':
-                          ltn = 2;
-                          break;
-                        case 'd':
-                          ltn = 3;
-                          break;
-                        case 'e':
-                          ltn = 4;
-                          break;
-                        case 'f':
-                          ltn = 5;
-                          break;
-                        case 'g':
-                          ltn = 6;
-                          break;
-                        case 'h':
-                          ltn = 7;
-                          break;
-                        case 'i':
-                          ltn = 8;
-                          break;
-                        case 'j':
-                          ltn = 9;
-                          break;
-                      }
-                      console.log(letter);
-                      console.log(number-1);
-                      if(hv2.length == 0 && hv3.length == 0 && hv4.length == 0 && hv5.length == 0){
-                        rollar(ltn, number-1);
-                      }
-                      else{
-                        rollar2(ltn, number-1)
-                      }
-                    }
-            			}, 1000*i);
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Home</a>
+    <a href="projects" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">My Projects</a>
+    <a href="portfolio" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Battleship</a>
+  </div>
 
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Databse</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
 
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">Honorius</h1>
+  <p class="w3-xlarge">Java and Python Development</p>
+  <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">My Itch.io</a>
+</header>
 
-                }
-              }
-              else{
-                var shot = commandData.shot;
-                var letter = commandData.letter.toLowerCase();
-                var number = parseInt(commandData.num);
-                var ltn = -1
-                switch(letter){
-                  case 'a':
-                    ltn = 0
-                    break;
-                  case 'b':
-                    ltn = 1
-                    break;
-                  case 'c':
-                    ltn = 2
-                    break;
-                  case 'd':
-                    ltn = 3
-                    break;
-                  case 'e':
-                    ltn = 4
-                    break;
-                  case 'f':
-                    ltn = 5
-                    break;
-                  case 'g':
-                    ltn = 6
-                    break;
-                  case 'h':
-                    ltn = 7
-                    break;
-                  case 'i':
-                    ltn = 8
-                    break;
-                  case 'j':
-                    ltn = 9
-                    break;
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1>Anchored in Openness</h1>
+      <h5 class="w3-padding-32">My projects are always free to download and use, with or without attribution, commerically or non-commercially.</h5>
 
-                }
-                if(shot === 'airstrike'){
-                  var airstrike = new Audio('airstrike.wav');
-                  airstrike.volume = 0.9;
-                  airstrike.play()
-                  setTimeout(() => {
-                    rollar3(ltn,number-1)
-                    rollar3(ltn+1,number-2)
-                    rollar3(ltn+1,number)
-                    rollar3(ltn-1,number-2)
-                    rollar3(ltn-1,number)
-                  },1000);
-                }
-
-              }
-
-              // console.log(hv1);
-              // console.log(hv2);
-              // console.log(hv3);
-              // console.log(hv4);
-              // console.log(hv5);
-              // var letter = commandData.letter.toLowerCase()
-              // var number = parseInt(commandData.num)
-              // var ltn = -1
-              // switch(letter){
-              //   case 'a':
-              //     ltn = 0
-              //     break;
-              //   case 'b':
-              //     ltn = 1
-              //     break;
-              //   case 'c':
-              //     ltn = 2
-              //     break;
-              //   case 'd':
-              //     ltn = 3
-              //     break;
-              //   case 'e':
-              //     ltn = 4
-              //     break;
-              //   case 'f':
-              //     ltn = 5
-              //     break;
-              //   case 'g':
-              //     ltn = 6
-              //     break;
-              //   case 'h':
-              //     ltn = 7
-              //     break;
-              //   case 'i':
-              //     ltn = 8
-              //     break;
-              //   case 'j':
-              //     ltn = 9
-              //     break;
-              //
-              // }
-              // rollar(ltn,number-1)
-            },
-            rootEl: document.getElementById("alan-btn"),
-          });
-          function sleep(milliseconds) {
-            const date = Date.now();
-            let currentDate = null;
-            do {
-              currentDate = Date.now();
-            } while (currentDate - date < milliseconds);
-          }
-        </script>
-        <!-- <script>
-          setTimeout(() => {
-            var buttoneus = document.getElementById("restart_btn");
-            buttoneus.click();
-          },5000);
-        </script> -->
-      </div>
-
+      <p class="w3-text-grey">My projects are all in the public domain, and I don't enforce copyrights. I make all of my apps and games in Java (JavaFX for GUI) and Python (including pygame). The button at the top of the page leads to my itch.io page, from where you can download my projects.</p>
     </div>
-  </body>
+
+    <div class="w3-third w3-center">
+      <i class="fa fa-anchor w3-padding-64 w3-text-red"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i>
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Just Chill</h1>
+      <h5 class="w3-padding-32">My apps and games are based in making life more fun and relaxing for users.</h5>
+
+      <p class="w3-text-grey">I try to solve common issues with most of my apps. For example, my database is useful for keeping track of unimportant passwords, formulas, and other tidbits of information that would otherwise be a pain to remember. Another app, the Science Bowl Moderator Suite, greatly simplifies Science Bowl moderation and scorekeeping. In addition to these tools, I have also made a game, Arrows, that is fun, whimsical, and simple to understand and play. More apps and games are on the pipeline. I also have yet to publish some of my older projects.</p>
+    </div>
+  </div>
+</div>
+
+<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">“If at first you don't succeed; call it version 1.0”</h1>
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">
+  <div class="w3-xlarge w3-padding-32">
+    <a href="https://github.com/Augustus31" target="_blank">
+      <img src="GitHub-Mark-32px.png"></img>
+    </a>
+    <!-- <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i> -->
+ </div>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
 </html>
