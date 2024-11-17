@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
+<body>
+
+
+<div class="w3-top">
+   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="https://honorius.us/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="projects" class="w3-bar-item w3-button w3-padding-large w3-white">My Games</a>
+      <a href="transliterator" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sp. Chars App</a>
+      <a href="cw3e" class="w3-bar-item w3-button w3-padding-large w3-white">CW3E Work</a>
+   </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Database</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
+
+<header class="w3-container w3-blue w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Work for CW3E</h1>
+  <!-- <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download on Itch.io</a> -->
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1><a href="https://cw3e.ucsd.edu/" target = "_blank">What is CW3E?</a></h1>
+      <p class="w3-padding-32">CW3E is an acronym for the Center for Western Weather and Water Extremes, an arm of Scripps Institution of Oceanography in San Diego, CA. It is a body with a particular focus on the analysis and prediction of weather patterns, especially precipitation, in the western United States and California in particular. Because California's mediterranean climate features very distinct wet and dry seasons, and because most of the state's precipitation comes from a handful of atmospheric river (AR) events in the winter, the state is highly susceptible to droughts in bad years or floods in periods of high AR activity. Therefore, accurate forecasting is tremendously important.
+      </p>
+
+      <h1>The EnsDL Workflow</h1>
+      <p class="w3-padding-32">One major project CW3E is currently working on is EnsDL, a Deep Learning-based prediction algorithm that builds on a pre-existing major model ensemble. While ensemble forecasts are generally accurate, they are not tuned for the particular climatic and topographic conditions in the western U.S; thus, the EnsDL algorithm takes ensemble outputs and feeds them into another neural network, which makes an adjustment to improve the accuracy of the forecast. The output is a gamma distribution of forecasted potential precipitation, which can then be parsed by a CDF function into a mean forecast and various percentile forecasts.  
+      </p>
+
+      <h1>My Contribution</h1>
+      <p class="w3-padding-32">I was initially accepted as a Summer Intern for CW3E, but my position has been extended to be a part-time one through the school year. Since joining CW3E in June, I've made a number of key contributions to the EnsDL codebase, including:
+         <ul>
+            <li>
+               <b>Workflow standardization in NetCDF format</b>: NetCDF files are the data standard in meteorology, and I rewrote large sections of the workflow to use, parse, and export NetCDF files.
+            </li>
+            <li>
+               <b>Code Efficiency Improvement</b>: I worked to find and address inefficiencies in the plotting algorithm, which ultimately led to a more than two-fold reduction in computation time. In particular, I wrote a subsetting algorithm to avoid recalculation of the Gamma CDF function for different regions of the overall grid. CW3E faces demand for daily plot outputs, and decreasing the computation time is a top priority to provide customers with data in a timely manner.
+            </li>
+            <li>
+               <b>Numba JIT Compilation</b>: I pioneered the experimental use of Numba's JIT compilation library to induce further speedup in simple code (particularly, loop-heavy sections).
+            </li>
+            <li>
+               <b>Extending Multiprocessing Support</b>: By dividing plotting routines into smaller sections, I was able to achieve greater parallelism and, with large inputs, significant speedup.
+            </li>
+            <li>
+               <b>Improving Plot Readability and Accessibility</b>: Using methods supported by the latest cognitive science research, I worked to streamline the plots produced by the EnsDL workflow. Of particular note is that I improved the color scheme to be more easily understandable as well as accessible to the colorblind. 
+            </li>
+         </ul>
+      </p>
+
+      <h3>Some Output Plots (see below)</h3>
+
+  </div>
+</div>
+
+<!-- 2nd Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
+  <div class="w3-content">
+      <img src="meanmap.png" alt="CW3E Mean Map" width=47%></img>
+      <img src="probmap.png" alt="CW3E Mean Map" width=47% align="right"></img>
+  </div>
+</div>
+
+
