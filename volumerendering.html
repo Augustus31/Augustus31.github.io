@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
+<body>
+
+
+<div class="w3-top">
+   <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="https://honorius.us/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="projects" class="w3-bar-item w3-button w3-padding-large w3-hover-white">My Games</a>
+      <a href="transliterator" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sp. Chars App</a>
+      <a href="cw3e" class="w3-bar-item w3-button w3-padding-large w3-hover-white">CW3E Work</a>
+   </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Database</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
+
+<header class="w3-container w3-blue w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Volumetric Rendering</h1>
+  <!-- <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download on Itch.io</a> -->
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1><a href="https://cw3e.ucsd.edu/" target = "_blank">Project Goal</a></h1>
+      <p class="w3-padding-32">The aim of this project (the final project for CSE 168) was to use physically-accurate techniques to produce attractive images of rendered bounded volumes, such as glass, gel, or fog. I modified my Optix pathtracer implementation to achieve this.
+      </p>
+
+      <h1>First Steps</h1>
+      <p class="w3-padding-32"> Initially (as noted in the milestone), there was a persistent bug with banding. It turned out that the bug was limited to spheres, and that it was very unclear where it was coming from, so I opted to continue with only triangles being rendered as volume boundaries. I proceeded to also add attenuated shadow rays, so that volumes would not always have full shadows. Below is a picture of exponential distance attenuation applied to a box, with partial shadows.
+         
+      </p>
+      <img src="r1.png" alt="render" width=60%></img> <br><br>
+
+      <h1>Adding BSDF and Single Scattering</h1>
+      <p class="w3-padding-32"> Next I added a surface BSDF. I used a variant of the glass bsdf, in which the decision on whether to reflect or transmit is based on a calculation of the Fresnel term (via Schlick's Approximation). If transmitting, the direction remains unchanged, while if reflecting, it follows the previously implemented phong brdf. Then, I added support for single scattering at a random point in between each pair of collisions inside a volume, with an isometric (1/4pi) phase function. See image below.
+      </p>
+      <img src="r2.png" alt="render" width=60%></img> <br><br>
+
+      <h1>Further Modifications</h1>
+      <p class="w3-padding-32"> Next, I added support for emission, attenuated by absorption. I also went back and modified the phase function I used, from isometric to Henyey-Greenstein. In a similar vein, I changed the transmission code in the BSDF to use Snell's law of refraction, changing direction based on the indices of refraction of the two mediums. Now I was able to produce, for example, colored glass (g= -0.75, for backscatter):
+      </p>
+      <img src="r3.png" alt="render" width=60%></img> <br><br>
+      <img src="r4.png" alt="render" width=60%></img> <br><br>
+
+      <h1>More renders</h1>
+      <p class="w3-padding-32"> With some experimentation in specular color, index of refraction, absorption and scattering coefficients, and emission, I was able to produce these images [ice cube, jade dragon, gel dragon, glass dragon]:
+      </p>
+      <img src="r5.png" alt="render" width=60%></img> <br><br>
+      <img src="r6.png" alt="render" width=60%></img> <br><br>
+      <img src="r7.png" alt="render" width=60%></img> <br><br>
+      <img src="r8.png" alt="render" width=60%></img> <br><br>
+      
+
+  </div>
+</div>
+
+
