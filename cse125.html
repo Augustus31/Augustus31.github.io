@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
+<body>
+
+
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="https://honorius.us/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="projects.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">My Games</a>
+      <a href="graphics.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Graphics</a>
+      <a href="cse125.html" class="w3-bar-item w3-button w3-padding-large w3-white">MR Game</a>
+      <a href="pathtracer.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Path Tracer</a>
+      <a href="transliterator.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sp. Chars</a>
+      <a href="cw3e.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">CW3E</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Database</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
+
+<header class="w3-container w3-blue w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Moonlight Revelry</h1>
+  <!-- <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download on Itch.io</a> -->
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1>CSE 125 at UC San Diego</h1>
+      <p class="w3-padding-32"> At UCSD, CSE 125 is a unique class: students are divided into groups of 7 or 8, and each group creates a 3D multiplayer game from scratch in 10 weeks. No game engines, just C++ and OpenGL. I was lucky enough to be a part of this wonderful class in Spring 2025 (I mean that literally, as there was an application to get into this class), and this was our game: Moonlight Revelry. <br><br> Our game is something like a free-for-all, 4-player capture the flag, set on a massive, open-air map with lots of verticality. The players all have various movement and attack abilities to spice things up. Whoever holds the flag when the clock hits zero wins.
+      </p>
+
+      <h1>Implementation</h1>
+      <p class="w3-padding-32">We implemented quite a few features, from scratch, in those 10 weeks. Some of the more notable ones are listed below:
+         <ul>
+            <li>
+               <b>Custom Render Pipeline in OpenGL</b>: Phong-based BRDF, shadows (shadow-mapping), point and directional lights, transparent clouds, skybox
+            </li>
+            <li>
+               <b>Asset Pipeline and Animation</b>: Custom asset design in Blender, asset import pipeline using Assimp, keyframed and smooth-skinned character animations
+            </li>
+            <li>
+               <b>Water, Fog, and Particles</b>: Stylized water with thresholded noise-based color patterns and FBM waves, exponential distance-based fog, underwater effects. Particle system for explosions, damage, and character trails.
+            </li>
+            <li>
+               <b>Physics System</b>: Built fully from scratch, no libraries. Forces, velocities, and positions per object. Sympleptic Euler Integration for position resolution. AABB Colliders for collision detection.
+            </li>
+            <li>
+               <b>UI</b>: Extensive onscreen UI, including text, vignettes, and moving tooltips, to aid the player.
+            </li>
+            <li>
+               <b>Networking</b>: TCP/IP, custom packets. Low latency on a local network.
+            </li>
+            <li>
+               <b>Level Design and Game Logic</b>: Creative placement of floating platforms, decorations, pickups to produce balanced level. Implementation of interesting powerup abilities like grappling hook and repulsor. Extensive playtesting prior to demo.
+            </li>
+         </ul>
+      </p>
+
+
+      <br><br><h1>Recording of our Live Demo at Atkinson Hall</h1>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/j2HaOc93SwY?si=psQ0JLfO1dXAxpVI&amp;start=391" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+      <br><br>
+      <h3><a href="https://cse125.ucsd.edu/2025/groups.html">Official CSE 125 Website (click here)</a></h3>
+
+
+  </div>
+</div>
+
+<!-- 2nd Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1>Photo Gallery</h1><br><br>
+
+      <img src="cse125/mr1.png" alt="img1" width=48%></img>
+      <img src="cse125/mr2.png" alt="img2" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="cse125/mr3.png" alt="img3" width=48%></img>
+      <img src="cse125/mr4.png" alt="img4" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="cse125/mr5.png" alt="img5" width=48%></img>
+      <img src="cse125/mr7.png" alt="img6" width=48% align="right"></img>
+  </div>
+</div>
+
+

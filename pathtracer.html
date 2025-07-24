@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
+<body>
+
+
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="https://honorius.us/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="projects.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">My Games</a>
+      <a href="graphics.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Graphics</a>
+      <a href="cse125.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">MR Game</a>
+      <a href="pathtracer.html" class="w3-bar-item w3-button w3-padding-large w3-white">Path Tracer</a>
+      <a href="transliterator.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sp. Chars</a>
+      <a href="cw3e.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">CW3E</a>
+    </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Database</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
+
+<header class="w3-container w3-blue w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Path Tracer</h1>
+  <!-- <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download on Itch.io</a> -->
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1>GPU Path Tracer with OptiX 6</h1>
+      <p class="w3-padding-32"> This is a modern path tracer that implements various BRDFs (Cosine, Phong, Microfacet), PDF sampling, area lights and light sampling, importance sampling, and russian roulette. This project was extended to incorporate basic homogenous volume rendering; see <b><a href="volumerendering.html">here</a></b>. Made as part of CSE 168 at UCSD, and therefore I cannot share source code. I can share some renders, though!
+      </p>
+
+  </div>
+</div>
+
+<!-- 2nd Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
+  <div class="w3-content">
+
+      <img src="cse168/cornellNEE.png" alt="img1" width=70%></img>
+      <p> Basic "Cornell Box" room rendered with next event estimation, without importance sampling. Phong BRDF. 64 samples per pixel.</p>
+
+      <br><br><br>
+      <img src="cse168/dragon.png" alt="img2" width=70%></img>
+      <p> Stanford dragon rendered with BRDF importance sampling and russian roulette. GGX microfacet BRDF. 128 samples per pixel.</p>
+
+      <br><br><br>
+      <img src="cse168/ggx.png" alt="img3" width=70%></img>
+      <p> Scene to demonstrate GGX microfacet BRDF, with balls of various textures. BRDF importance sampling and Russian Roulette. 64 samples per pixel.</p>
+  </div>
+</div>
+
+

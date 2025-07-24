@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
+<body>
+
+
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="https://honorius.us/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+    <a href="projects.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">My Games</a>
+    <a href="graphics.html" class="w3-bar-item w3-button w3-padding-large w3-white">Graphics</a>
+    <a href="cse125.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">MR Game</a>
+    <a href="pathtracer.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Path Tracer</a>
+    <a href="transliterator.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sp. Chars</a>
+    <a href="cw3e.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">CW3E</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Database</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
+
+<header class="w3-container w3-red w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Graphics and Animation Projects</h1>
+  <!-- <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download on Itch.io</a> -->
+</header>
+
+<!-- 2nd Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1><a href="https://honorius.itch.io/procedural-terrain-generator" target = "_blank">Procedural Terrain Generation</a></h1>
+      <h5 class="w3-padding-32">Some nice terrain, with custom shaders</h5>
+
+      <p class="w3-text-grey"> A project showcasing procedural mesh generation and custom shaders in Unity 3D. I may make it into a game in the future. See more <a href=https://honorius.itch.io/procedural-terrain-generator  target = "_blank"><strong>here</strong></a>. </p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <a href="https://honorius.itch.io/procedural-terrain-generator" target = "_blank">
+        <img src="terrain.png" alt="terrain" width=270px height=270px></img>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 8th Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1><a href="https://github.com/Augustus31/Animation" target = "_blank">Smooth-Skin Animation</a></h1>
+      <h5 class="w3-padding-32">A rendering pipeline for skinned animations</h5>
+
+      <p class="w3-text-grey">Renderer in OpenGL that implements a skeleton, joints, and skin for character animation. It uses the smooth skinning algorithm and reads provided keyframe channels to determine character pose.  See source code <a href="https://github.com/Augustus31/Animation"  target = "_blank"><strong>here</strong></a>. </p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <a href="https://github.com/Augustus31/Animation" target = "_blank">
+        <img src="wasp1e.png" alt="Smooth Skin Animation" width=270px height=270px></img>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- 6th Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1><a href="https://github.com/Augustus31/Cloth-Simulation" target = "_blank">Cloth Simulation</a></h1>
+      <h5 class="w3-padding-32">Physics-based cloth simulation</h5>
+
+      <p class="w3-text-grey">A barebones physical cloth simulation using spring-dampers. Also features wind and air resistance. See source code <a href="https://github.com/Augustus31/Cloth-Simulation"  target = "_blank"><strong>here</strong></a>. </p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <a href="https://github.com/Augustus31/Cloth-Simulation" target = "_blank">
+        <img src="cloth3.png" alt="clothsim" width=270px height=270px></img>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- 2nd Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1><a href="https://github.com/Augustus31/Particle-System" target = "_blank">Particle System</a></h1>
+      <h5 class="w3-padding-32">Customizable particle system</h5>
+
+      <p class="w3-text-grey"> Physically-based particle system with tunable parameters such as spawn rate, particle size, gravity, and coefficient of restitution. Good for integrating into more complex projects. See source code <a href="https://github.com/Augustus31/Particle-System"  target = "_blank"><strong>here</strong></a>. </p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <a href="https://github.com/Augustus31/Particle-System" target = "_blank">
+        <img src="particlesystem.png" alt="map" width=270px height=270px></img>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h1><a href="pathtracer.html" target = "_blank">GPU Path Tracer</a></h1>
+      <h5 class="w3-padding-32">A modern path tracer written in OptiX 6</h5>
+
+      <p class="w3-text-grey">Path tracer with GPU acceleration thanks to Nvidia OptiX. Features several BRDF implementations and sampling methods, importance sampling, and russian roulette. Also links to an extension that adds basic volume rendering. Source code cannot be provided, but further details and images are <a href="pathtracer.html" target = "_blank"><strong>here</strong></a>.</p>
+    </div>
+
+    <div class="w3-third w3-center">
+      <a href="pathtracer.html" target = "_blank">
+        <img src="dragon.png" alt="arrows" width=270px height=270px></img>
+      </a>
+    </div>
+  </div>
+</div>
+
