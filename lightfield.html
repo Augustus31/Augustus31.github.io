@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Honorius</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <link rel="icon" href="elIcon.ico">
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+</style>
+<body>
+
+
+<div class="w3-top">
+    <div class="w3-bar w3-blue w3-card w3-left-align w3-large">
+      <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-blue" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+      <a href="https://honorius.us/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+      <a href="projects.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">My Games</a>
+      <a href="graphics.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Graphics</a>
+      <a href="cse125.html" class="w3-bar-item w3-button w3-padding-large w3-white">MR Game</a>
+      <a href="pathtracer.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Path Tracer</a>
+      <a href="transliterator.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sp. Chars</a>
+      <a href="cw3e.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">CW3E</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://honorius.itch.io/easy-access-database" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Database</a>
+    <a href="https://honorius.itch.io/science-bowl-moderator-suite" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Scibowl</a>
+    <a href="https://honorius.itch.io/keyboard-buzzer" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Buzzer</a>
+    <a href="https://honorius.itch.io/arrows" target = "_blank" class="w3-bar-item w3-button w3-padding-large">Arrows</a>
+  </div>
+</div>
+
+<header class="w3-container w3-blue w3-center" style="padding:64px 16px">
+  <h1 class="w3-margin w3-jumbo">Light Field Rendering</h1>
+  <!-- <a href="https://honorius.itch.io/" target = "_blank" class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Download on Itch.io</a> -->
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1>Overview</h1>
+      <p class="w3-padding-32"> As part of CSE 274 (Image-based Rendering) at UC San Diego, I implemented the Light Field Rendering algorithm described by Levoy and Hanrahan in their seminal <a href="https://graphics.stanford.edu/papers/light/light-lores-corrected.pdf"><b>paper.</b></a> In this report, I'll go over the basic theory, the implementation process, and some of my results.
+      </p>
+
+      <h1>Theory</h1>
+      <p class="w3-padding-32"> In their 1996 paper, Levoy and Hanrahan noted that the plenoptic function (initially 7D) could be reduced to 4D in free space and fixed time, making it possible to sample it. They described multiple parameterizations of lines in 4D, with the "best" being that of a two-plane (light slab) parameterization; that is, lines in space are parameterized by their intersection points with two 
+        planes (the uv plane and st plane). Capturing a set of images from a grid of positions on one plane, looking at the other, would allow novel views to be reconstructed from arbitrary camera positions and directions (though the camera would have to be near the uv plane for best results). This could be extended to multiple light slabs for 360 degree views of a scene. Levoy and Hanrahan implemented this algorithm by storing a compressed version of vectors corresponding to pixels in the input images. 
+        In my implementation, I did not use compression and simply sampled pixels from the original images as needed. 
+      </p>
+
+      <h1>Implementation</h1>
+      <p class="w3-padding-32">The goal of my implementation was produce high-quality novel views in a variety of scenes, both rendered and real. I also wanted to support multiple light slabs. My implementation process was iterative, and ran as follows:
+         <ol>
+            <li>
+               <b>Selecting a renderer for image capture</b>: I intended to develop my algorithm using rendered images, as this would be easier than immediately attempting to generate novel views of real scenes. I decided on using Unity Engine as my rasterizer of choice, and wrote a script that would move the camera along a defined uv plane and take photos of a scene.
+            </li>
+            <li>
+               <b>Core algorithm, one plane</b>: I next wrote a sampler script in python that synthesizes a novel view, with each pixel being a bilinear interpolation of its closest matches among source images. I initially implemented a one plane parameterization (u, v, theta, phi).
+            </li>
+            <li>
+               <b>Two plane (light slab)</b>: I extended my algorithm to support a (u, v, s, t) parameterization. In conjunction, I tweaked my Unity script to use a sheared perspective projection to take photos of the st plane.
+            </li>
+            <li>
+               <b>Multiple slabs</b>: I extended my algorithm to support multiple slabs, and to pick a slab for the evaluation of every pixel. This means that one image can draw from multiple slabs, as desired.
+            </li>
+            <li>
+               <b>Real imagery</b>: I drew fron the Stanford Lightfield Dataset and rendered novel views of real scenes. I had to write some more scripts to standardize image names before they could be processed by my sampling algorithm.
+            </li>
+            <li>
+               <b>Speedup?</b>: I attempted to use Numba JIT compilation for speedup, but gains were very limited. Perhaps in future I could try adding multiprocessing support.
+            </li>
+         </ol>
+
+         Github repository: will be posted once I get a chance to write a gitignore and do a refactor of some messy code
+      </p>
+
+
+  </div>
+</div>
+
+<!-- 2nd Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-32 w3-container">
+  <div class="w3-content">
+      <h1>Results</h1><br><br>
+
+      <img src="lightfield/output2.png" alt="img1" width=48%></img>
+      <img src="lightfield/output4.png" alt="img2" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="lightfield/setup1.png" alt="img3" width=48%></img>
+      <img src="lightfield/output6.png" alt="img4" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="lightfield/apple1.png" alt="img1" width=48%></img>
+      <img src="lightfield/apple2.png" alt="img2" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="lightfield/buddha1.png" alt="img1" width=48%></img>
+      <img src="lightfield/buddha2.png" alt="img2" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="lightfield/tarot2.png" alt="img1" width=48%></img>
+      <img src="lightfield/lego.png" alt="img2" width=48% align="right"></img>
+
+
+      <p> Captions (top to bottom, left to right):
+        <ol>
+          <li>
+              First image rendered with my sampling implementation; uses a u,v,theta,phi parameterization and is very blurry.
+          </li>
+          <li>
+              Same scene, novel view, rendered with a two plane implementation and denser source images. 
+          </li>
+          <li>
+              Screenshot from Unity showing 4-slab setup. Same scene; house and two pagodas.
+          </li>
+          <li>
+              Novel view from 4-slab capture. Image taken from corner of two slabs, and synethesizes both slabs.
+          </li>
+          <li>
+              Apple (rendered), novel view from in front of original uv plane.
+          </li>
+          <li>
+              Apple (rendered), novel view from behind original uv plane.
+          </li>
+          <li>
+              Buddha (rendered), novel view, also featured in original Levoy and Hanrahan paper.
+          </li>
+          <li>
+              Different novel view of Buddha.
+          </li>
+          <li>
+              Novel view of Tarot cards, real imagery. From Stanford light field dataset.
+          </li>
+          <li>
+              Novel view of lego truck, real imagery. From Stanford light field dataset.
+          </li>
+        </ol>
+      </p>
+
+      <h1>Side-by-side Ground Truth comparisons</h1><br><br>
+
+      <img src="lightfield/apple2.png" alt="img1" width=48%></img>
+      <img src="lightfield/gt2.png" alt="img2" width=48% align="right"></img>
+
+      <br><br><br>
+      <img src="lightfield/output8.png" alt="img3" width=48%></img>
+      <img src="lightfield/gt1.png" alt="img4" width=48% align="right"></img>
+
+      <p> The latter scene has significantly wider spacing of source images on the UV plane, and the scene has more depth, making the render blurrier.</p>
+
+  </div>
+</div>
+
+
