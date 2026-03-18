@@ -139,7 +139,7 @@ a:active {
               Screenshot from Unity showing 4-slab setup. Same scene; house and two pagodas.
           </li>
           <li>
-              Novel view from 4-slab capture. Image taken from corner of two slabs, and synethesizes both slabs.
+              Novel view from 4-slab capture. Image taken from corner of two slabs, and synthesizes both slabs.
           </li>
           <li>
               Apple (rendered), novel view from in front of original uv plane.
@@ -176,4 +176,29 @@ a:active {
   </div>
 </div>
 
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-32 w3-container">
+  <div class="w3-content">
 
+      <h1>Evaluation Metrics</h1>
+      <p class="w3-padding-32">There isn't very much to evaluate the implementation on, but I think it turned out fairly well.
+         <ol>
+            <li>
+               <b>Image Quality</b>: The image quality is good and is indistinguishable from ground truth images when the source image spacing is narrow and when the scene does not have much depth. The sampling is at its best at or near the st plane, and blurriness increases as you move away from it. This effect is especially pronounced in the images of the large scene with the pagodas and house, as well as in the tarot cards image.
+            </li>
+            <li>
+               <b>Compression</b>: In order to focus on the core algorithm, I did not implement compression. 
+            </li>
+            <li>
+               <b>Speed</b>: I wrote a cache to store recently loaded images in order to reduce I/O calls, which greatly improved speed. Even so, my algorithm takes 10-30 seconds to render a 1280 x 720 image, which is significantly slower than Levoy and Hanrahan. The difference can probably be chalked up to my lack of compression, which means I have to load in a whole image if I need to access one of its pixels. Python being a slow interpreted language may also be another reason. I attempted to refactor my code to use Numba's JIT compilation tool, but this did not result in notable speedup. Multiprocessing would almost certainly help, and it may be something I'll add going forward.
+            </li>
+            <li>
+               <b>Multiple slabs</b>: My multi-slab implementation appears to work fairly robustly, and synethesizes 2 slabs into 1 image with no problem. I have used it to generate novel views from all around the scene.
+            </li>
+            <li>
+               <b>Original Images</b>: Levoy and Hanrahan used a buddha and a lion to test their algorithm in the original 1996 paper. I could not find the lion, but I was able to download the buddha and generate novel views of similar quality (above). They did not describe the positioning of the camera that they used for the views they published in the paper, so I could not render an exact match for comparison.
+            </li>
+
+
+  </div>
+</div>
